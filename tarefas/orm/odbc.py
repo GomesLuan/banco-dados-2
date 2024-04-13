@@ -1,6 +1,5 @@
 import psycopg2
 
-# Estabelecimento de uma conexão com o banco de dados
 conn = psycopg2.connect(
     dbname="atividade_db",
     user="postgres",
@@ -9,17 +8,31 @@ conn = psycopg2.connect(
     port="5432"
 )
 
-# Criação um cursor para executar consultas
 cur = conn.cursor()
 
-# Execução de um comando SQL
-cur.execute("SELECT * FROM atividade")
+sql = "INSERT INTO atividade (descricao, projeto, data_inicio, data_fim) VALUES (%s, %s, %s, %s)"
+val = ("Monitoria - Atividade 2", 2, "2018-06-27", "2018-07-31")
+cur.execute(sql, val)
 
-# Recuperação dos resultados, se houver
+conn.commit()
+
+sql = "UPDATE projeto SET responsavel = %s WHERE codigo = %s"
+val = (3, 1)
+cur.execute(sql, val)
+
+conn.commit()
+
+cur.execute("SELECT * FROM projeto ORDER BY codigo")
+
 rows = cur.fetchall()
 for row in rows:
     print(row)
 
-# Fechamento do cursor e da conexão
+cur.execute("SELECT * FROM atividade ORDER BY codigo")
+
+rows = cur.fetchall()
+for row in rows:
+    print(row)
+
 cur.close()
 conn.close()
