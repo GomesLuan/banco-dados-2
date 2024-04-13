@@ -2,6 +2,10 @@
 
 ## Informações Pessoais
 
-Matrícula: 20220044000
-Nome: Luan Victor de Araujo Gomes
-Email: luan.gomes.706@ufrn.edu.br
+- Matrícula: 20220044000
+- Nome: Luan Victor de Araujo Gomes
+- Email: luan.gomes.706@ufrn.edu.br
+
+## Tarefas
+
+- [ORM](tarefas/orm/tarefa-orm.md)
